@@ -110,7 +110,7 @@ Streams_all| The audio streams to be displayed showing the user interface
 External| Have a light control
 Preset_key | Presets key number
 Plm_support | 0 LineIn (Aux)<br>1 BT<br>2 optical
-WifiChanne| WiFi ChanneWiFi bands
+WifiChannel | WiFi Channel WiFi bands
 AP_clients | number of AP clients
 battery |1 means battery is in charging
 Battery_percent | 0 to 100
@@ -178,7 +178,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=wlanConnectAp:ssid:channel:auth:en
 Parameter | Mandatory? | Type | Description
 ----------|------------|------|---------------------
 Ssid | True |  string | When connecting the wifi name ssid, wlanConnect ApEx, in hexadecimal code transmission
-channel | True | string | Wifi channe to connect, optional 1-12
+channel | True | string | Wifi channel to connect, optional 1-12
 auth | True | string | Whether the encryption is OPEN or WPA2PSK
 Encry | True | string | Encryption type, AES or NONE
 Pwd | True | string | Password Wifi, type the password is OPEN NONE; When wlanConnect ApEx, when transmitting hexadecimacode, if the Password is empty, you do not have to enter.
@@ -362,7 +362,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:stop
 
 ## Adjusting volume
 URInterface:
-Http://10.10.254/httpapi.asp?command=setPlayerCmd:vol:value
+Http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:vol:value
 
 - Description: Adjusting the volume of the player, the value is one volume value of 0-100. Speakers will also change the volume Main and under loudspeaker
 
@@ -1124,7 +1124,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=IOSimuKeyOut:%d
 
 - Description: References MCU settings. The MCU Receives instruction AXX + KEY + XXX Voice
 - Command:
-the URinterface:<br>http://$ReceiverIpAddress/httpapi.asp?command=PromptEnable
+the URinterface:<br>http://$ReceiverIpAddress/httpapi.asp?command=PromptEnable<br>
 http://$ReceiverIpAddress/httpapi.asp?command=PromptDisable
 
 Description:
