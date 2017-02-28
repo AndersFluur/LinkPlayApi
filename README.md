@@ -5,7 +5,9 @@ OriginaPDF is [here](https://www.google.se/url?sa=t&rct=j&q=&esrc=s&source=web&c
 
 The current version is to only a very limited extent reviewed and improved with regards to the Google translation.
 
-The same protocol is used by the Multiroom receivers called Roxcore, sold by Kjell&Company in Scandinavia.
+The same protocol is used by the Multiroom receivers branded, Roxcore, sold by Kjell&Company in Scandinavia.
+
+A list of devices controlled by this protocol is [here](devices.md).
 
 # Presentation and list of interfaces
 
@@ -23,24 +25,25 @@ it is analyzed, an a response is returned by Sonoé iEast and the corresponding 
 
 Query Format http: command is:
 
-Httpapi.asp? Command = setPlayerCmd: play
+Httpapi.asp? Command = setPlayerCmd: play: uri
 
-//xxxx/httpapi.asp = ********? Command =
+http://a.b..c.d/httpapi.asp = ********? Command =
 or
 Httpapi.asp? Command = setPlayerCmd: play
 
-Example:
+Example: Play Internet Radio
 
 IP address of Sonoé iEast: 10.10.10.254
 - Command: Play
 
-http://10.10.10.254/httpapi.asp?command=setPlayerCmd:play
+http://10.10.10.254/httpapi.asp?command=setPlayerCmd:play:http://pr320.pinguinradio.nl/listen.pls 
 
 The IP address of Sonoé iEast can be obtained by looking upnp such as
 10.10.10.254 (url assume the following interfaces 10.10.10.254 IP)
 
-Command directives: the directive requires letters + in form
-Digital, may not appear or special characters unicode
+Example: Play from NAS
+
+http:///10.10.10.254/httpapi.asp?command=setPlayerCmd:play:http://NasAddress/fichier.mp3
 
 The current specification is dated: 15/05/2016
 
@@ -286,7 +289,11 @@ http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:playlist:uri:<index>
 ## Pause / resume playing the current music
 URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:pause
+
+
 http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:onepause
+
+
 http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:resume
 
 - Description: Controls the player. <br>pause: pause current playback<br>resume: resume playback<br>onepause: if you pause in the resume, if playback is paused
@@ -374,7 +381,7 @@ Http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:vol:value
 
 ## Mute mode
 URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:mute:1
+'http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:mute:1'
 
 - Description: Activation of the Mute mode, according to the following parameter Activation = 1 and Deactivation = 0
 
