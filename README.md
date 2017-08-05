@@ -6,6 +6,7 @@ OriginaPDF is [here](https://www.google.se/url?sa=t&rct=j&q=&esrc=s&source=web&c
 The current version is to only a very limited extent reviewed and improved with regards to the Google translation.
 
 The same protocol is used by the Multiroom receivers branded, Roxcore, sold by Kjell&Company in Scandinavia.
+When searching internet for these devices, one can find out that the above brands are OEM for a company called [Linkplay](http://linkplay.com). This explains why there are a number of devices supporting the same REST like interface.
 
 A list of devices controlled by this protocol is [here](devices.md).
 
@@ -310,14 +311,14 @@ Controls:
 
 ## Playing music
 URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:play
+http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:play:<URI>
 
 - Description: Starts playback of a file after one
 Pause
 
 - Supported Formats: none
 - HTTP Request: GET
-- Command: setPlayerCmd: play
+- Command: setPlayerCmd: play:<URI>
 - Response: OK
 
 ## Previous song playback
@@ -381,13 +382,13 @@ Http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:vol:value
 
 ## Mute mode
 URInterface:
-'http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:mute:1'
+```http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:mute:1```
 
 - Description: Activation of the Mute mode, according to the following parameter Activation = 1 and Deactivation = 0
 
 - Supported Formats: none
 - HTTP Request: GET
-- Command: setPlayerCmd:mute:1
+- ```Command: setPlayerCmd:mute:1```
 - Response: OK
 
 ## Set the playback mode
