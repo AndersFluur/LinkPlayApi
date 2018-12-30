@@ -871,7 +871,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=reboot
 - Command: reboot
 - Response: OK
 
-## Programming stop device
+## Programming stop device (switching off)
 URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=setShutdown:sec
 
@@ -882,15 +882,15 @@ gold SECN n milliseconds
 - Command: setShutdown:sec
 - Response: OK
 
-## Switching off
+## Show time left to shut down
 URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=getShutdown
 
-- Description: Allows you to turn off the device time immediately
+- Description: Shows the current information about time left to shut down (in seconds)
 
 - HTTP Request: GET
 - Command: getShutdown
-- Response: OK
+- Response: number (in seconds)
 
 
 ## Stop WIFI signa
