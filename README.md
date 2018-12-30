@@ -1024,7 +1024,7 @@ If the device is online, the device using the system time synchronization SNTP, 
 
 If the device is online, you can use to adjust the system time:
 
-http://$ReceiverIpAddress/httpapi.asp?command= Timesync: YYYYMMDDHHMMSS
+http://$ReceiverIpAddress/httpapi.asp?command=timeSync:YYYYMMDDHHMMSS
 
 ## Set the timer
 the URinterface:
