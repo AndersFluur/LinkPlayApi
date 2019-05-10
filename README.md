@@ -224,6 +224,19 @@ PAIRFAIL | Password Error
 FAIL | Error, then captured state then 10s continuously Captured, in order to ensure that this state is stable, otherwise it There may be only a temporary cut
 OK | Connection is successful
 
+## Hide or show SSID
+URInterface:
+http://$ReceiverIpAddress/httpapi.asp?command=setHideSSID:1
+
+- Description:
+Allows you to request a SSID to be hidden or shown
+Tested on an August WR320
+
+- Returns a non-json form value
+- HTTP Request: GET
+- Command: setHideSSID:1
+- Command: setHideSSID:0
+- Response: OK
 
 
 # Music Player and Control
