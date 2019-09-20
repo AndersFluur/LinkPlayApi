@@ -238,6 +238,34 @@ Tested on an August WR320
 - Command: setHideSSID:0
 - Response: OK
 
+## Get built-in WiFi info
+URInterface:
+http://$ReceiverIpAddress/httpapi.asp?command=getNetwork
+
+- Description:
+Allows you to request information about the built in AP
+Tested on SACKit MOVEit firmware 3.6.4105 release 20170205
+
+- Supported Formats: JSON
+- HTTP Request: GET
+- Command: getNetwork
+
+Response:
+```
+{
+  "securemode": "1",
+  "auth": "WPAPSKWPA2PSK",
+  "encry": "AES",
+  "psk": "wifipassword"
+}
+```
+
+Field | description
+------|------------
+securemode | unknown, maybe if authentication is enabled
+auth | security protocol used for authentication
+encry | encryption standard used for authentication
+psk | encryption key for the network
 
 # Music Player and Control
 ## Reading Status
