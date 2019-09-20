@@ -129,6 +129,25 @@ Part1_free | User1 part in ROM, free size
 Part2_storage | User2 part in ROM, storage size
 Part2_free | User2 part in ROM, free size
 
+## Get system log download page
+
+- URInterface: http://$ReceiverIpAddress/httpapi.asp?command=getsyslog
+- Description: No use? But you can go to http://$ReceiverIpAddress/data/sys.log to download the log. Fileformat is unknown.
+
+- Supported Formats: non-json form value
+- HTTP Request: GET
+- Command: getsyslog
+- Response:
+```
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"> </head>
+  <body>
+    <DIV><span id="dl">&nbsp;&nbsp;&nbsp;&nbsp;<a href=data/sys.log>download</a><hr></span></DIV>
+  </body>
+</html>
+```
 
 ## Network connection configuration WIFI
 Get list of WIFI networks Available (SSID)
