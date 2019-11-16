@@ -12,25 +12,23 @@ Obtain basic information about the device, such as ssid, the version of Equipmen
 - Command: getStatus
 
 Response:
-```
-{
-"Language": "en_us",
-"Ssid": "FA5100_a4dc",
-"Firmware": "WIFIAudio.multil_room.1.2.20140324",
-"Builddate": "release",
-"Release": "20140324",
-"Group": "",
-"Expired": "0",
-"Internet": "0",
-"Uuid": "FF123456nnnnnnnnnnnn",
-"Netstat": "0",
-"Essid": "",
-"Apcli0": "",
-"Eth2": "192.168.120.112",
-"Hardware": "Wi Mu-A03",
-......
-}
-```
+	{
+		"Language": "en_us",
+		"Ssid": "FA5100_a4dc",
+		"Firmware": "WIFIAudio.multil_room.1.2.20140324",
+		"Builddate": "release",
+		"Release": "20140324",
+		"Group": "",
+		"Expired": "0",
+		"Internet": "0",
+		"Uuid": "FF123456nnnnnnnnnnnn",
+		"Netstat": "0",
+		"Essid": "",
+		"Apcli0": "",
+		"Eth2": "192.168.120.112",
+		"Hardware": "Wi Mu-A03",
+		......
+	}
 
 Description of Fields:
 
@@ -87,16 +85,17 @@ Part2_free | User2 part in ROM, free size
 - HTTP Request: GET
 - Command: getsyslog
 - Response:
-```
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8"> </head>
-  <body>
-    <DIV><span id="dl">&nbsp;&nbsp;&nbsp;&nbsp;<a href=data/sys.log>download</a><hr></span></DIV>
-  </body>
-</html>
-```
+
+	<!doctype html>
+	<html>
+		<head>
+		    <meta charset="utf-8">
+		</head>
+		<body>
+		    <DIV><span id="dl">&nbsp;&nbsp;&nbsp;&nbsp;<a href=data/sys.log>download</a><hr></span></DIV>
+		</body>
+	</html>
+
 
 ## Network connection configuration WIFI
 Get list of WIFI networks Available (SSID)
@@ -109,15 +108,15 @@ List all wifi networks (SSID) identified by LinkPlay.
 - HTTP Request: GET
 - Command: wlanGetApListEx
 - Response: (here 3 wifi networks)
-```
-{"Res": "0", "aplist": [
-{"Ssid": "wmmAudio_a7b8", "bssid": "00: 22: 6c: 00: a7: b8", "rssi"
-Th ":" OPEN "," encry ":" NONE "," extch ":" 1 "},
-(Ssid): "WIIMU_Network", "bssid": "20: dc: e6: cb: 7e: 78", "rssi"
-Th ":" WPA2PSK "," encry ":" AES "," extch ":" 0 "},
-{"Ssid": "WIFIAudio_29b0", "bssid": "00: 22: 6c: 16: 29: b0", "rssi": "65"
-Th ":" OPEN "," encry ":" NONE "," extch ":" 0 "}]}
-```
+
+	{"Res": "0", "aplist": [
+	{"Ssid": "wmmAudio_a7b8", "bssid": "00: 22: 6c: 00: a7: b8", "rssi"
+	Th ":" OPEN "," encry ":" NONE "," extch ":" 1 "},
+	(Ssid): "WIIMU_Network", "bssid": "20: dc: e6: cb: 7e: 78", "rssi"
+	Th ":" WPA2PSK "," encry ":" AES "," extch ":" 0 "},
+	{"Ssid": "WIFIAudio_29b0", "bssid": "00: 22: 6c: 16: 29: b0", "rssi": "65"
+	Th ":" OPEN "," encry ":" NONE "," extch ":" 0 "}]}
+
 
 Description of fields:
 
@@ -232,14 +231,13 @@ Allows you to request information about the built in AP
 - Command: getNetwork
 
 Response:
-```
-{
-  "securemode": "1",
-  "auth": "WPAPSKWPA2PSK",
-  "encry": "AES",
-  "psk": "wifipassword"
-}
-```
+
+	{
+	  "securemode": "1",
+	  "auth": "WPAPSKWPA2PSK",
+	  "encry": "AES",
+	  "psk": "wifipassword"
+	}
 
 Field | description
 ------|------------
@@ -259,24 +257,23 @@ Description: Allows you to query LinkPlay to find out: The currently playing son
 - HTTP Request: GET
 - Command: getPlayerStatus
 Response:
-```
-{
-"Type": "0",
-"Ch": "0",
-"Mode": "10", "
-"Loop": "0", "
-"Status": "play",
-"Curpos": "12900",
-"Totlen": "229000",
-"Title": "736865",
-"Artist": "47726f6f766520436f766572616765",
-"Album": "xxxxxxxxxx",
-"Plicount": "1",
-"Plicurr": "1",
-"Flight": "90",
-"Mute": "0",
-}
-```
+
+	{
+		"Type": "0",
+		"Ch": "0",
+		"Mode": "10", "
+		"Loop": "0", "
+		"Status": "play",
+		"Curpos": "12900",
+		"Totlen": "229000",
+		"Title": "736865",
+		"Artist": "47726f6f766520436f766572616765",
+		"Album": "xxxxxxxxxx",
+		"Plicount": "1",
+		"Plicurr": "1",
+		"Flight": "90",
+		"Mute": "0",
+	}
 
 Field | description
 ------|------------
@@ -404,13 +401,13 @@ Http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:vol:value
 
 ## Mute mode
 URInterface:
-```http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:mute:1```
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:mute:1`
 
 - Description: Activation of the Mute mode, according to the following parameter Activation = 1 and Deactivation = 0
 
 - Supported Formats: none
 - HTTP Request: GET
-- ```Command: setPlayerCmd:mute:1```
+- Command: setPlayerCmd:mute:1
 - Response: OK
 
 ## Set the playback mode
@@ -462,20 +459,19 @@ http://$ReceiverIpAddress/httpapi.asp?command=getLocalPlayList
 - Command: getLocalPlayList
 
 Response:
-```
-{
-"Num": "2",
-"Locallist": [
-{
-"File": "/ media / sda1 / avrilavigne - tik tok.mp3"
-},
-{
-"File": "/ media / sda1 / Aprilavigne - hush hush.mp3"
-}
 
-]
-}
-```
+	{
+		"Num": "2",
+		"Locallist": [
+			{
+				"File": "/ media / sda1 / avrilavigne - tik tok.mp3"
+			},
+			{
+				"File": "/ media / sda1 / Aprilavigne - hush hush.mp3"
+			}
+
+		]
+	}
 
 Description of fields:
 
@@ -498,34 +494,33 @@ http://$ReceiverIpAddress/httpapi.asp?command=getFileInfo:index:range
 
 Response:
 If num is greater than 1, the file info returned is multiple.
-```
-{"Num": "2", "infolist": [
-{
-"Filename": "/ media / sda1 / avrilavigne - hush hush.mp3",
-"Totlen": "0",
-"Title": "unknown",
-"Artist": "unknown",
-"Album": "unknown"
-},
-{
-"Filename": "/ media / sda1 / avrilavigne - hush hush2.mp3",
-"Totlen": "0",
-"Title": "unknown",
-"Artist": "unknown",
-"Album": "unknown"
-}]}
-```
+
+	{"Num": "2", "infolist": [{
+	"Filename": "/ media / sda1 / avrilavigne - hush hush.mp3",
+	"Totlen": "0",
+	"Title": "unknown",
+	"Artist": "unknown",
+	"Album": "unknown"
+	},
+	{
+	"Filename": "/ media / sda1 / avrilavigne - hush hush2.mp3",
+	"Totlen": "0",
+	"Title": "unknown",
+	"Artist": "unknown",
+	"Album": "unknown"
+	}]}
+
 
 If num is less than 1, the file info return is unique;
-```
-{
-"Filename": "/ media / sda1 / avrilavigne - hush hush.mp3",
-"Totlen": "0",
-"Title": "unknown",
-"Artist": "unknown",
-"Album": "unknown"
-}
-```
+
+	{
+	"Filename": "/ media / sda1 / avrilavigne - hush hush.mp3",
+	"Totlen": "0",
+	"Title": "unknown",
+	"Artist": "unknown",
+	"Album": "unknown"
+	}
+
 
 
 
@@ -560,20 +555,20 @@ http://$ReceiverIpAddress/httpapi.asp?command=getCacheList
 - Command: getCacheList
 
 Response:
-```
-{
-"Num": "2",
-"Cachelist": [
-{
-"File": "/ media / sda1 / avrilavigne - tik tok.mp3"
-},
-{
-"File": "/ media / sda1 / Aprilavigne - hush hush.mp3"
-}
 
-]
-}
-```
+	{
+	"Num": "2",
+	"Cachelist": [
+	{
+	"File": "/ media / sda1 / avrilavigne - tik tok.mp3"
+	},
+	{
+	"File": "/ media / sda1 / Aprilavigne - hush hush.mp3"
+	}
+
+	]
+	}
+
 
 Description of fields:
 
@@ -597,26 +592,25 @@ each of the files, on the basis of the index of each one in the list and from 0.
 
 Response:
 If num is greater than 1, the fileinfo returned is multiple.
-```
 
-{"Num": "2", "infolist": [
-{
-"Filename": "/ media / sda1 / avrilavigne - hush hush.mp3",
-"Metadata": "unknown",
-},
-{
-"Filename": "/ media / sda1 / avrilavigne - hush hush2.mp3",
-"Metadata": "unknown",
-}]}
-```
+
+	{"Num": "2", "infolist": [
+	{
+	"Filename": "/ media / sda1 / avrilavigne - hush hush.mp3",
+	"Metadata": "unknown",
+	},
+	{
+	"Filename": "/ media / sda1 / avrilavigne - hush hush2.mp3",
+	"Metadata": "unknown",
+	}]}
 
 If num is  1, the fileinfo returned is single.
-```
-{
-"Filename": "/ media / sda1 / avrilavigne - hush hush.mp3",
-"Metadata": "unknown",
-}
-```
+
+	{
+	"Filename": "/ media / sda1 / avrilavigne - hush hush.mp3",
+	"Metadata": "unknown",
+	}
+
 
 Description of fields:  
 
@@ -641,22 +635,22 @@ http://$ReceiverIpAddress/httpapi.asp?command=multiroom:getSlaveList
 - Command: Multiroom:getSlaveList
 
 Response:
-```
-{
-"Slaves": "1",
-"Slave_list": [
-{
-"Name": "FA5100_a3f4",
-"Mask": "0",
-"Volume": "90",
-"Mute": "0",
-"Channel": "0",
-"Ip": "10.10.10.100",
-"Version": "WIFIAudio.1.2.2321"
-}
-]
-}
-```
+
+	{
+	"Slaves": "1",
+	"Slave_list": [
+	{
+	"Name": "FA5100_a3f4",
+	"Mask": "0",
+	"Volume": "90",
+	"Mute": "0",
+	"Channel": "0",
+	"Ip": "10.10.10.100",
+	"Version": "WIFIAudio.1.2.2321"
+	}
+	]
+	}
+
 
 Field | Description
 ------|-------------
@@ -1025,11 +1019,12 @@ http://$ReceiverIpAddress/httpapi.asp?command=getMvRomBurnPrecent
 
 Response:
 
-```
-{
-" status ":" 0 "," progress ":" 50 "
-}
-```
+
+	
+	{
+	" status ":" 0 "," progress ":" 50 "
+	}
+
 
 
 Fields | Meaning
