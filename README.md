@@ -1,56 +1,5 @@
-# TRYAK - Sonoé iEast - API Manual
-
-This is a translation from French performed by Google.
-OriginaPDF is [here](https://www.google.se/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwju44bD9djQAhXRa5oKHcroABUQFggcMAA&url=https%3A%2F%2Fwww.planete-domotique.com%2Fblog%2Fwp-content%2Fuploads%2F2016%2F06%2F20160516-manuel-api-sonoe-ieast.pdf&usg=AFQjCNHGf1fp0s8uHO0CfiRRuKE8YNpdWg)
-
-The current version is to only a very limited extent reviewed and improved with regards to the Google translation.
-
-The same protocol is used by the Multiroom receivers branded, Roxcore, sold by Kjell&Company in Scandinavia.
-When searching internet for these devices, one can find out that the above brands are OEM for a company called [Linkplay](http://linkplay.com). This explains why there are a number of devices supporting the same REST like interface.
-
-A list of devices controlled by this protocol is [here](devices.md).
-
-# Presentation and list of interfaces
-
-## Overview
-In addition to being compatible with the DLNA and Airplay streaming protocols, Sonoé IEast also offers local file playback via Mirco SD card,
-Multi-room, audio streaming controon different Sonoé iEast, transmission
-User-defined read control and other functions, all with
-User-friendly controand wireless WIFI Audio technology.
-
-In addition, we developed an API allowing interaction with Sonoé
-IEast mainly via http-type query.
-
-The HTTP (get method) request is sent to the embedded Web server in Sonoé iEast,
-it is analyzed, an a response is returned by Sonoé iEast and the corresponding function is executed. The query and reply issued by Sonoé iEast is in JSON format.
-
-Query Format http: command is:
-
-Httpapi.asp? Command = setPlayerCmd: play: uri
-
-http://a.b..c.d/httpapi.asp = ********? Command =
-or
-Httpapi.asp? Command = setPlayerCmd: play
-
-Example: Play Internet Radio
-
-IP address of Sonoé iEast: 10.10.10.254
-- Command: Play
-
-http://10.10.10.254/httpapi.asp?command=setPlayerCmd:play:http://pr320.pinguinradio.nl/listen.pls 
-
-The IP address of Sonoé iEast can be obtained by looking upnp such as
-10.10.10.254 (url assume the following interfaces 10.10.10.254 IP)
-
-Example: Play from NAS
-
-http:///10.10.10.254/httpapi.asp?command=setPlayerCmd:play:http://NasAddress/fichier.mp3
-
-The current specification is dated: 15/05/2016
-
-
-
-## Get Sonoé iEast Information
+# LinkPlay API Documentation
+## Get Information
 
 http://$ReceiverIpAddress/httpapi.asp?command=getStatus
 
@@ -190,7 +139,7 @@ URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=wlanConnectAp:ssid:channel:auth:encry
 : Pwd: chext
 
-- Description: Allows Sonoé iEast to be connected to a wifi network selected.
+- Description: Allows LinkPlay to be connected to a wifi network selected.
 
 - Supported Formats: JSON
 - HTTP Request: GET
@@ -217,7 +166,7 @@ URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=GetCurrentWirelessConnectEx
 
 - Description:
-Request the SSID of the WiFi the Sonoé iEast is connected to, SSID will be in hex
+Request the SSID of the WiFi the LinkPlay is connected to, SSID will be in hex
 
 - Returns a non-json form value
 - HTTP Request: GET
@@ -231,7 +180,7 @@ Value '1' is unknown.
 URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=wlanConnectHideApEx:ssid:pwd
 
-- Description: Allows Sonoé iEast to be connected to a wifi network selected. The ssid and pwd must be in hexadecimal format.
+- Description: Allows LinkPlay to be connected to a wifi network selected. The ssid and pwd must be in hexadecimal format.
 
 - Supported Formats: JSON
 - HTTP Request: GET
@@ -242,7 +191,7 @@ URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=wlanGetConnectState
 
 - Description:
-Allows you to request the status of the Sonoé iEast wifi connection.
+Allows you to request the status of the LinkPlay wifi connection.
 
 - Returns a non-json form value
 - HTTP Request: GET
@@ -278,7 +227,6 @@ http://$ReceiverIpAddress/httpapi.asp?command=getNetwork
 
 - Description:
 Allows you to request information about the built in AP
-Tested on SACKit MOVEit firmware 3.6.4105 release 20170205
 
 - Supported Formats: JSON
 - HTTP Request: GET
