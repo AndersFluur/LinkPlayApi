@@ -88,7 +88,7 @@ Part2_free | User2 part in ROM, free size
 - HTTP Request: GET
 - Command: getsyslog
 - Response:
-
+```
 	<!doctype html>
 	<html>
 		<head>
@@ -98,7 +98,7 @@ Part2_free | User2 part in ROM, free size
 		    <DIV><span id="dl">&nbsp;&nbsp;&nbsp;&nbsp;<a href=data/sys.log>download</a><hr></span></DIV>
 		</body>
 	</html>
-
+```
 
 ## Network connection configuration WIFI
 Get list of WIFI networks Available (SSID)
