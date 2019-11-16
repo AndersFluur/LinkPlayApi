@@ -103,7 +103,7 @@ Get list of WIFI networks Available (SSID)
 
 - URInterface: http://$ReceiverIpAddress/httpapi.asp?command=wlanGetApList
 - Description:
-List all wifi networks (SSID) identified by Sonoé iEast.
+List all wifi networks (SSID) identified by LinkPlay.
 
 - Supported Formats: JSON
 - HTTP Request: GET
@@ -213,7 +213,6 @@ http://$ReceiverIpAddress/httpapi.asp?command=setHideSSID:1
 
 - Description:
 Allows you to request a SSID to be hidden or shown
-Tested on an August WR320
 
 - Returns a non-json form value
 - HTTP Request: GET
@@ -254,7 +253,7 @@ psk | encryption key for the network
 URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=getPlayerStatus
 
-Description: Allows you to query Sonoé iEast to find out: The currently playing song, the title of the song and other metadata
+Description: Allows you to query LinkPlay to find out: The currently playing song, the title of the song and other metadata
 
 - Supported Formats: JSON
 - HTTP Request: GET
@@ -359,7 +358,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:prev
 URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:next
 
-- Description: Allows you to play back a previous song
+- Description: Allows you to play back the next song
 
 - Supported Formats: none
 - HTTP Request: GET
@@ -631,7 +630,7 @@ Metadata | Song information or unknown (Hexadecimal encoding)
 
 # Multi-Room Management
 
-## Get a list of Sonoé iEast available
+## Get a list of LinkPlay available
 URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=multiroom:getSlaveList
 
@@ -661,18 +660,18 @@ Response:
 
 Field | Description
 ------|-------------
-Slaves | Number of Sonoé iEast  available
+Slaves | Number of LinkPlay available
 Slave_list | Information about each Sonoé iEast case available
 name | Name
 mask | Case already in Multi-Room mode, Yes = 1, No = 0
 Volume | Volume level
 Mute | Enable Mute mode, Yes = 1, Off = 0
 Channel |  Wifi channel
-ip | IP address of the Sonoé iEast Boot
+ip | IP address of the LinkPlay Boot
 version | firmware version
 
 
-## Removing a Sonoé iEast from the multi-room
+## Removing a LinkPlay from the multi-room
 URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveKickout:ip
 
@@ -683,7 +682,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveKickout:ip
 - Command: Multiroom: SlaveKickout: ip
 - Response: OK
 
-## Hide the IP address of a Sonoé iEast
+## Hide the IP address of a LinkPlay
 URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveMask:ip
 
@@ -898,8 +897,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=reboot
 URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=setShutdown:sec
 
-- Description: Used to turn off the device time immediately sec0
-gold SECN n milliseconds
+- Description: Used to turn off the device timed.
 
 - HTTP Request: GET
 - Command: setShutdown:sec
@@ -1053,10 +1051,11 @@ http://$ReceiverIpAddress/httpapi.asp?command=timeSync:YYYYMMDDHHMMSS
 the URinterface:
 http://$ReceiverIpAddress/httpapi.asp?command=setAlarmClock:n:trig:op:time[:day][:url]
 
-- Description: Hooks que la indicates field is required, for example, is set to trip at a daily alarm instruction
+- Description: [?] Hooks que la indicates field is required, for example, is set to trip at a daily alarm instruction
 
 http://$ReceiverIpAddress/httpapi.asp?command=setAlarmClock:n:trig:op:time:url
-the day is not-have
+
+?
 
 - HTTP Request : GET
 - Command: setAlarmClock: n: trig: op: time [: day] [: url]
@@ -1117,7 +1116,7 @@ wifi : GB WIFI mode
 the URinterface:
 http://$ReceiverIpAddress/httpapi.asp?command=IOSimuPullUp:%d
 
-- Description: Allows management forced the GPIO
+- Description: Allows management of the GPIO
 
 - 0: nReload not recommended, Generally used for WPS and factory reset
 - 11: GPIO_nReady (only A02)
@@ -1138,7 +1137,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=IOSimuPullDown:%d
 the URinterface:
 http://$ReceiverIpAddress/httpapi.asp?command=IOSimuRead:%d
 
-- Description: Read GPIO leve
+- Description: Read GPIO
 - Command: IOSimuRead:%d
 
 ## Analog controlkey input
