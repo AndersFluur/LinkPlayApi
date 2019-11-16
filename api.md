@@ -267,7 +267,7 @@ Description: Allows you to query LinkPlay to find out: The currently playing son
 Response:
 
 
-	```{
+	{
 		"Type": "0",
 		"Ch": "0",
 		"Mode": "10", "
@@ -282,7 +282,7 @@ Response:
 		"Plicurr": "1",
 		"Flight": "90",
 		"Mute": "0",
-	}```
+	}
 
 
 Field | description
@@ -470,7 +470,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=getLocalPlayList
 
 Response:
 
-	```{
+	{
 		"Num": "2",
 		"Locallist": [
 			{
@@ -481,7 +481,7 @@ Response:
 			}
 
 		]
-	}```
+	}
 
 Description of fields:
 
@@ -505,7 +505,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=getFileInfo:index:range
 Response:
 If num is greater than 1, the file info returned is multiple.
 
-	```{"Num": "2", "infolist": [{
+	{"Num": "2", "infolist": [{
 	"Filename": "/ media / sda1 / avrilavigne - hush hush.mp3",
 	"Totlen": "0",
 	"Title": "unknown",
@@ -518,18 +518,18 @@ If num is greater than 1, the file info returned is multiple.
 	"Title": "unknown",
 	"Artist": "unknown",
 	"Album": "unknown"
-	}]}```
+	}]}
 
 
 If num is less than 1, the file info return is unique;
 
-	```{
+	{
 	"Filename": "/ media / sda1 / avrilavigne - hush hush.mp3",
 	"Totlen": "0",
 	"Title": "unknown",
 	"Artist": "unknown",
 	"Album": "unknown"
-	}```
+	}
 
 
 
@@ -566,7 +566,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=getCacheList
 
 Response:
 
-	```{
+	{
 	"Num": "2",
 	"Cachelist": [
 	{
@@ -577,7 +577,7 @@ Response:
 	}
 
 	]
-	}```
+	}
 
 
 Description of fields:
@@ -604,7 +604,7 @@ Response:
 If num is greater than 1, the fileinfo returned is multiple.
 
 
-	```{"Num": "2", "infolist": [
+	{"Num": "2", "infolist": [
 	{
 	"Filename": "/ media / sda1 / avrilavigne - hush hush.mp3",
 	"Metadata": "unknown",
@@ -612,14 +612,14 @@ If num is greater than 1, the fileinfo returned is multiple.
 	{
 	"Filename": "/ media / sda1 / avrilavigne - hush hush2.mp3",
 	"Metadata": "unknown",
-	}]}```
+	}]}
 
 If num is  1, the fileinfo returned is single.
 
-	```{
+	{
 	"Filename": "/ media / sda1 / avrilavigne - hush hush.mp3",
 	"Metadata": "unknown",
-	}```
+	}
 
 
 Description of fields:  
@@ -869,7 +869,9 @@ http://$ReceiverIpAddress/httpapi.asp?command=setNetwork:1:password
 - HTTP Request: GET
 - Command: setnetwork: 1: password
 - Response:
-No response the system restarts after the validation of the new password.
+No response 
+
+the system restarts after the validation of the new password.
 password The Therefore must reconnect to the WiFi network and enter the new password.
 password.
 
@@ -918,7 +920,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=getShutdown
 - Response: number (in seconds)
 
 
-## Stop WIFI signa
+## Stop WIFI signal
 the URinterface:
 http://$ReceiverIpAddress/httpapi.asp?command=setPowerWifiDown
 
@@ -1117,6 +1119,7 @@ wifi : GB WIFI mode
 
 
 # Simulation Instruction IO
+Do not use without hardware knowledge, can kill your Speaker!!
 ## Instruction GPIO pullup
 the URinterface:
 http://$ReceiverIpAddress/httpapi.asp?command=IOSimuPullUp:%d
