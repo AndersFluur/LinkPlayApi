@@ -113,13 +113,13 @@ List all wifi networks (SSID) identified by LinkPlay.
 - Response: (here 3 wifi networks)
 
 
-	{"Res": "0", "aplist": [
+	```{"Res": "0", "aplist": [
 	{"Ssid": "wmmAudio_a7b8", "bssid": "00: 22: 6c: 00: a7: b8", "rssi"
 	Th ":" OPEN "," encry ":" NONE "," extch ":" 1 "},
 	(Ssid): "WIIMU_Network", "bssid": "20: dc: e6: cb: 7e: 78", "rssi"
 	Th ":" WPA2PSK "," encry ":" AES "," extch ":" 0 "},
 	{"Ssid": "WIFIAudio_29b0", "bssid": "00: 22: 6c: 16: 29: b0", "rssi": "65"
-	Th ":" OPEN "," encry ":" NONE "," extch ":" 0 "}]}
+	Th ":" OPEN "," encry ":" NONE "," extch ":" 0 "}]}```
 
 
 Description of fields:
