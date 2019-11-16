@@ -11,7 +11,9 @@ Obtain basic information about the device, such as ssid, the version of Equipmen
 - HTTP Request: GET
 - Command: getStatus
 
+
 Response:
+
 	{
 		"Language": "en_us",
 		"Ssid": "FA5100_a4dc",
@@ -29,6 +31,7 @@ Response:
 		"Hardware": "Wi Mu-A03",
 		......
 	}
+
 
 Description of Fields:
 
@@ -108,6 +111,7 @@ List all wifi networks (SSID) identified by LinkPlay.
 - HTTP Request: GET
 - Command: wlanGetApListEx
 - Response: (here 3 wifi networks)
+
 
 	{"Res": "0", "aplist": [
 	{"Ssid": "wmmAudio_a7b8", "bssid": "00: 22: 6c: 00: a7: b8", "rssi"
@@ -230,7 +234,9 @@ Allows you to request information about the built in AP
 - HTTP Request: GET
 - Command: getNetwork
 
+
 Response:
+
 
 	{
 	  "securemode": "1",
@@ -238,6 +244,7 @@ Response:
 	  "encry": "AES",
 	  "psk": "wifipassword"
 	}
+
 
 Field | description
 ------|------------
@@ -258,6 +265,7 @@ Description: Allows you to query LinkPlay to find out: The currently playing son
 - Command: getPlayerStatus
 Response:
 
+
 	{
 		"Type": "0",
 		"Ch": "0",
@@ -274,6 +282,7 @@ Response:
 		"Flight": "90",
 		"Mute": "0",
 	}
+
 
 Field | description
 ------|------------
