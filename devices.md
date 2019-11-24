@@ -7,3 +7,4 @@
 | August  | media players | Specific models unknown |
 | Muzo | Cobblestone | -|
 |Venz |A501| - |
+|Audiocast  | M5 | https://audiocast.io/ |
