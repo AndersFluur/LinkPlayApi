@@ -862,15 +862,14 @@ http://$ReceiverIpAddress/httpapi.asp?command=wpsservermode
 
 ## Closing the WPS server
 the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=wpscance
+http://$ReceiverIpAddress/httpapi.asp?command=wpscancel
 
 - Description: Opening of WPS standby server integration
 of new devices
 
 - HTTP Request: GET
-- Command: wpscance
-- Response:
-unknown command
+- Command: wpscancel
+- Response: OK
 
 ## WPS Client opening for device
 URL:
