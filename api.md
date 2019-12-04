@@ -307,13 +307,13 @@ mute | Is currently muted
 
 ## Playing a Playlist
 URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:playlist:uri:<index>
+http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:playlist:uri:&lt;index&gt;
 
 - Description: Allows you to play a playlist with an extension index
 
 - Supported Formats: none
 - HTTP Request: GET
-- Command: setPlayerCmd: playlist: uri: <index>
+- Command: setPlayerCmd: playlist: uri: &lt;index&gt;
 - Response: OK
 
 ## Pause / resume playing the current music
@@ -340,14 +340,15 @@ Controls:
 
 ## Playing music
 URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:play:<URI>
+http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:play:&lt;URI&gt;
 
 - Description: Starts playback of a file after one
 Pause
 
 - Supported Formats: none
 - HTTP Request: GET
-- Command: setPlayerCmd: play:<URI>
+- Command: setPlayerCmd: play:&lt;URI&gt;
+
 - Response: OK
 
 ## Previous song playback
