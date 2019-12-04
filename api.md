@@ -81,12 +81,13 @@ Part2_free | User2 part in ROM, free size
 
 ## Get system log download page
 
-- URInterface: http://$ReceiverIpAddress/httpapi.asp?command=getsyslog
-- Description: No use? But you can go to http://$ReceiverIpAddress/data/sys.log to download the log. Fileformat is unknown.
+- `http://$ReceiverIpAddress/httpapi.asp?command=getsyslog`
+- Description: No use? But you can go to `http://$ReceiverIpAddress/data/sys.log` to download the log. Fileformat is unknown.
 
 - Supported Formats: non-json form value
 - HTTP Request: GET
 - Command: getsyslog
+- WARNING! Only available in recent Firmware
 - Response:
 ```
 	<!doctype html>
@@ -102,8 +103,7 @@ Part2_free | User2 part in ROM, free size
 
 ## Network connection configuration WIFI
 Get list of WIFI networks Available (SSID)
-
-- URInterface: http://$ReceiverIpAddress/httpapi.asp?command=wlanGetApList
+`http://$ReceiverIpAddress/httpapi.asp?command=wlanGetApList`
 - Description:
 List all wifi networks (SSID) identified by LinkPlay.
 
@@ -139,8 +139,7 @@ Extch | ?
 
 ## Wifi network connection
 URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=wlanConnectAp:ssid:channel:auth:encry
-: Pwd: chext
+`http://$ReceiverIpAddress/httpapi.asp?command=wlanConnectAp:ssid:channel:auth:encry:Pwd:chext`
 
 - Description: Allows LinkPlay to be connected to a wifi network selected.
 
@@ -165,8 +164,7 @@ The query interface, to determine if the connection was successful.
 
 
 ## Get SSID of current connected WiFi network
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=GetCurrentWirelessConnectEx
+`http://$ReceiverIpAddress/httpapi.asp?command=GetCurrentWirelessConnectEx`
 
 - Description:
 Request the SSID of the WiFi the LinkPlay is connected to, SSID will be in hex
@@ -177,11 +175,10 @@ Request the SSID of the WiFi the LinkPlay is connected to, SSID will be in hex
 - Response: res:4D79535349444E616D65:1
 
 Response '4D79535349444E616D65' has to be converted to ASCII 'MySSIDName'.
-Value '1' is unknown.
+Value '1' is probably 'Connected or not
 
 ## Connect to a hidden wifi network
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=wlanConnectHideApEx:ssid:pwd
+`http://$ReceiverIpAddress/httpapi.asp?command=wlanConnectHideApEx:ssid:pwd`
 
 - Description: Allows LinkPlay to be connected to a wifi network selected. The ssid and pwd must be in hexadecimal format.
 
@@ -190,8 +187,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=wlanConnectHideApEx:ssid:pwd
 - Command: wlanConnectHideApEx: SSID: pwd
 
 ## State request for wifi connection
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=wlanGetConnectState
+`http://$ReceiverIpAddress/httpapi.asp?command=wlanGetConnectState|
 
 - Description:
 Allows you to request the status of the LinkPlay wifi connection.
@@ -211,8 +207,7 @@ FAIL | Error, then captured state then 10s continuously Captured, in order to en
 OK | Connection is successful
 
 ## Hide or show SSID
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setHideSSID:1
+`http://$ReceiverIpAddress/httpapi.asp?command=setHideSSID:1`
 
 - Description:
 Allows you to request a SSID to be hidden or shown
@@ -224,8 +219,7 @@ Allows you to request a SSID to be hidden or shown
 - Response: OK
 
 ## Get built-in WiFi info
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=getNetwork
+`http://$ReceiverIpAddress/httpapi.asp?command=getNetwork`
 
 - Description:
 Allows you to request information about the built in AP
@@ -255,8 +249,8 @@ psk | encryption key for the network
 
 # Music Player and Control
 ## Reading Status
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=getPlayerStatus
+`http://$ReceiverIpAddress/httpapi.asp?command=getPlayerStatus`
+
 
 Description: Allows you to query LinkPlay to find out: The currently playing song, the title of the song and other metadata
 
@@ -306,8 +300,7 @@ mute | Is currently muted
 
 
 ## Playing a Playlist
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:playlist:uri:&lt;index&gt;
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:playlist:uri:<index>`
 
 - Description: Allows you to play a playlist with an extension index
 
@@ -317,14 +310,9 @@ http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:playlist:uri:&lt;inde
 - Response: OK
 
 ## Pause / resume playing the current music
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:pause
-
-
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:onepause
-
-
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:resume
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:pause`
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:onepause`
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:resume`
 
 - Description: Controls the player. <br>pause: pause current playback<br>resume: resume playback<br>onepause: if you pause in the resume, if playback is paused
 
@@ -339,21 +327,19 @@ Controls:
 
 
 ## Playing music
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:play:&lt;URI&gt;
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:play:<URI>`
 
 - Description: Starts playback of a file after one
 Pause
 
 - Supported Formats: none
 - HTTP Request: GET
-- Command: setPlayerCmd: play:&lt;URI&gt;
+- Command: setPlayerCmd:play:&lt;URI&gt;
 
 - Response: OK
 
 ## Previous song playback
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:prev
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:prev`
 
 - Description: Allows you to play back a previous song
 
