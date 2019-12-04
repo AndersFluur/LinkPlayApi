@@ -1,7 +1,7 @@
 # LinkPlay API Documentation
 ## Get Information
 
-http://ReceiverIpAddress/httpapi.asp?command=getStatus
+`http://$ReceiverIpAddress/httpapi.asp?command=getStatus`
 
 
 - Description:
