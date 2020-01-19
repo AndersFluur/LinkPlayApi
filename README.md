@@ -193,6 +193,21 @@ Does not return any value, you must call the connection state of
 The query interface, to determine if the connection was successful.
 
 
+## Get SSID of current connected WiFi network
+URInterface:
+http://$ReceiverIpAddress/httpapi.asp?command=GetCurrentWirelessConnectEx
+
+- Description:
+Request the SSID of the WiFi the Sonoé iEast is connected to, SSID will be in hex
+
+- Returns a non-json form value
+- HTTP Request: GET
+- Command: wlanGetConnectState
+- Response: res:4D79535349444E616D65:1
+
+Response '4D79535349444E616D65' has to be converted to ASCII 'MySSIDName'.
+Value '1' is unknown.
+
 ## Connect to a hidden wifi network
 URInterface:
 http://$ReceiverIpAddress/httpapi.asp?command=wlanConnectHideApEx:ssid:pwd
