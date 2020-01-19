@@ -129,6 +129,25 @@ Part1_free | User1 part in ROM, free size
 Part2_storage | User2 part in ROM, storage size
 Part2_free | User2 part in ROM, free size
 
+## Get system log download page
+
+- URInterface: http://$ReceiverIpAddress/httpapi.asp?command=getsyslog
+- Description: No use? But you can go to http://$ReceiverIpAddress/data/sys.log to download the log. Fileformat is unknown.
+
+- Supported Formats: non-json form value
+- HTTP Request: GET
+- Command: getsyslog
+- Response:
+```
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"> </head>
+  <body>
+    <DIV><span id="dl">&nbsp;&nbsp;&nbsp;&nbsp;<a href=data/sys.log>download</a><hr></span></DIV>
+  </body>
+</html>
+```
 
 ## Network connection configuration WIFI
 Get list of WIFI networks Available (SSID)
@@ -253,6 +272,34 @@ Tested on an August WR320
 - Command: setHideSSID:0
 - Response: OK
 
+## Get built-in WiFi info
+URInterface:
+http://$ReceiverIpAddress/httpapi.asp?command=getNetwork
+
+- Description:
+Allows you to request information about the built in AP
+Tested on SACKit MOVEit firmware 3.6.4105 release 20170205
+
+- Supported Formats: JSON
+- HTTP Request: GET
+- Command: getNetwork
+
+Response:
+```
+{
+  "securemode": "1",
+  "auth": "WPAPSKWPA2PSK",
+  "encry": "AES",
+  "psk": "wifipassword"
+}
+```
+
+Field | description
+------|------------
+securemode | unknown, maybe if authentication is enabled
+auth | security protocol used for authentication
+encry | encryption standard used for authentication
+psk | encryption key for the network
 
 # Music Player and Control
 ## Reading Status
@@ -830,15 +877,14 @@ http://$ReceiverIpAddress/httpapi.asp?command=wpsservermode
 
 ## Closing the WPS server
 the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=wpscance
+http://$ReceiverIpAddress/httpapi.asp?command=wpscancel
 
 - Description: Opening of WPS standby server integration
 of new devices
 
 - HTTP Request: GET
-- Command: wpscance
-- Response:
-unknown command
+- Command: wpscancel
+- Response: OK
 
 ## WPS Client opening for device
 URL:
