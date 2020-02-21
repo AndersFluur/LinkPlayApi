@@ -1,4 +1,6 @@
 # LinkPlay API Documentation
+## Small note
+If your firmware is from 2015 or earlier, you have an open telnet service on the default port. Username and password is `admin`. BE CAREFUL, YOU WILL HAVE ROOT ACCESS THEN!
 ## Get Information
 
 `http://$ReceiverIpAddress/httpapi.asp?command=getStatus`
