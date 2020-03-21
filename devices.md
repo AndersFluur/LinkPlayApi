@@ -8,3 +8,4 @@
 | Sonoé | iEast | -
 | Stereoboommm  | MR200, MR300 | - |
 | Venz |A501| - |
+|Audiocast  | M5 | https://audiocast.io/ |
