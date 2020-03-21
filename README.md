@@ -1,4 +1,4 @@
-# TRYAK - Sonoé iEast - API Manual
+# LinkPlay - API Specifikation
 
 This is a translation from French performed by Google.
 OriginaPDF is [here](https://www.google.se/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwju44bD9djQAhXRa5oKHcroABUQFggcMAA&url=https%3A%2F%2Fwww.planete-domotique.com%2Fblog%2Fwp-content%2Fuploads%2F2016%2F06%2F20160516-manuel-api-sonoe-ieast.pdf&usg=AFQjCNHGf1fp0s8uHO0CfiRRuKE8YNpdWg)
@@ -50,7 +50,7 @@ The current specification is dated: 15/05/2016
 
 
 
-## Get Sonoé iEast Information
+## Get Device status Information
 
 http://$ReceiverIpAddress/httpapi.asp?command=getStatus
 
