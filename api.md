@@ -40,46 +40,46 @@ Description of Fields:
 
 Fields | Description
 -------|------------
-Language | Language
-SSID | SSID equipment
-Firmware | Software version
-Build | Note: Actual output is output, debug, save Three cases, indicates the version of the type generally press.
+language | Language
+ssid | SSID equipment
+firmware | Software version
+build | Build type (release, debug)
 Release | Date of Release
-Group | Name of the group
-Expired | Outdated software flag: 0: valid; 1: Out of date
+group | Name of the group
+expired | Is software outdated? 1: No 0: Yes
 MAC | Mac Address
-Internet | Internet access: 0; 1: true
-Uuid | UDID device, the first 8 bytes of the project ID, followed by the device's unique identifier
-Netstat | WIFI connection state. <br>0: not connected <br>1: transient state<br>2: Connected
-Essid | WIFI router to connect to, use the command GetStatus returned using hex coded hex to support the transmission of special characters.
-Apcli0 | The IP address of WIFI
-Eth2 | IP address of the Ethernet
-Hardware | Hardware version
-Project | Name of the project
+internet | Internet access: 0: No; 1: Yes
+uuid | UDID device, the first 8 bytes of the project ID, followed by the device's unique identifier
+netstat | WIFI connection state. <br>0: not connected <br>1: transient state<br>2: Connected
+essid | WIFI router to connect to, returned in hex to support the transmission of special characters.
+apcli0 | The IP address of WIFI
+eth2 | IP address of the Ethernet
+hardware | Hardware version
+project | Name of the project
 VersionUpdate | New version available
 NewVer | Available version number
-Mcu_ver | The version MCU, if 0 indicates the absence of MCU
-DeviceName | Name upnp and airplay of Sonoé iEast
-Temp_uuid |  Temp uuid, will change after boot up
-Streams | Bit:<br>0 if MFI airplay activated<br>1 airplay activated<br>2 if DLNA enabled<br>3 if Qplay<br>10 if TTPod<br>11 if DoubanFM<br>14 if QingTing<br>15 if ximalaya<br>16 TuneIn<br>17 iHeartRadio<br>18 Tida<br>21 Pandora<br>22 Spotify
-Streams_all| The audio streams to be displayed showing the user interface
-External| Have a light control
-Preset_key | Presets key number
-Plm_support | 0 LineIn (Aux)<br>1 BT<br>2 optical
-WifiChannel | WiFi Channel WiFi bands
-AP_clients | number of AP clients
-battery |1 means battery is in charging
-Battery_percent | 0 to 100
-Securemode | WiFi secured or not
-psk | If the WiFi is secured, allows to fill in the password
-usb_storagesize | U disk storage size
-usb_freesize | Udisk free size
-mmc_storagesize | Mmc storage size , otherwise this one, there are no T cards
-mmc_freesize | Mmc free size
-Part1_storage | User1 part in ROM, storage size
-Part1_free | User1 part in ROM, free size
-Part2_storage | User2 part in ROM, storage size
-Part2_free | User2 part in ROM, free size
+mcu_ver | The version MCU, if 0 indicates the absence of MCU
+DeviceName | Device name (UPNP, AirPlay, Hostname)
+temp_uuid |  Temp uuid, will change after boot up
+streams | WARNING: The following info is WRONG for atleast 1 firmware version<br>Bit:<br>0 if MFI airplay activated<br>1 airplay activated<br>2 if DLNA enabled<br>3 if Qplay<br>10 if TTPod<br>11 if DoubanFM<br>14 if QingTing<br>15 if ximalaya<br>16 TuneIn<br>17 iHeartRadio<br>18 Tida<br>21 Pandora<br>22 Spotify
+streams_all| The audio streams to be displayed showing the user interface
+external| Does the device have a light control
+preset_key | Presets key number
+plm_support | 0 LineIn (Aux)<br>1 BT<br>2 optical
+WifiChannel | Number of WiFi Channel / WiFi bands
+AP_clients | Number of AP clients
+battery |1 means battery is in charging (BROKEN on atleast 1 model)
+battery_percent | 0 to 100 (BROKEN on atleast 1 model)
+securemode | WiFi secured or not
+psk | If the WiFi is secured, password in plaintext
+usb_storagesize | USB storage size
+usb_freesize | USB free space
+mmc_storagesize | SD storage size
+mmc_freesize | SD free space
+part1_storage | User1 part in ROM, storage size
+part1_free | User1 part in ROM, free size
+part2_storage | User2 part in ROM, storage size
+part2_free | User2 part in ROM, free size
 
 ## Get system log download page
 
@@ -107,7 +107,7 @@ Part2_free | User2 part in ROM, free size
 Get list of WIFI networks Available (SSID)
 `http://$ReceiverIpAddress/httpapi.asp?command=wlanGetApList`
 - Description:
-List all wifi networks (SSID) identified by LinkPlay.
+List all wifi networks (SSID) identified.
 
 - Supported Formats: JSON
 - HTTP Request: GET
@@ -115,28 +115,30 @@ List all wifi networks (SSID) identified by LinkPlay.
 - Response: (here 3 wifi networks)
 
 
-	```{"Res": "0", "aplist": [
+```
+	{"Res": "0", "aplist": [
 	{"Ssid": "wmmAudio_a7b8", "bssid": "00: 22: 6c: 00: a7: b8", "rssi"
 	Th ":" OPEN "," encry ":" NONE "," extch ":" 1 "},
 	(Ssid): "WIIMU_Network", "bssid": "20: dc: e6: cb: 7e: 78", "rssi"
 	Th ":" WPA2PSK "," encry ":" AES "," extch ":" 0 "},
 	{"Ssid": "WIFIAudio_29b0", "bssid": "00: 22: 6c: 16: 29: b0", "rssi": "65"
-	Th ":" OPEN "," encry ":" NONE "," extch ":" 0 "}]}```
+	Th ":" OPEN "," encry ":" NONE "," extch ":" 0 "}]}
+```
 
 
 Description of fields:
 
 Fields | Description
 -------|----------------
-res | Back to the list
-Aplist | SSID List
-Ssid | Wifi visible name, wlanGetApListEx returned ssid Hexadecimal encoding to support speciacharacters and the Chinese.
-Bssid | Mac Address
-Rssi | Signal Strength
+res | Unknown
+aplist | SSID List
+ssid | Wifi visible name, the command wlanGetApListEx returs SSID in Hexadecimal encoding to support special characters and the Chinese.
+bssid | WIFI BSSID
+rssi | Signal Strength
 channel | Wifi channel
-auth | Encrypt
+auth | Encrypted?
 encry | Encryption Type
-Extch | ?
+extch | ? (Possibly extension channel)
 
 
 ## Wifi network connection
@@ -147,18 +149,15 @@ URInterface:
 
 - Supported Formats: JSON
 - HTTP Request: GET
-- Command: WlanConnectApEx: SSID = xxx: ch = n: auth = xxx: encty = xxx: pwd = xxx: chext n =
-
-
 
 Parameter | Mandatory? | Type | Description
 ----------|------------|------|---------------------
-Ssid | True |  string | When connecting the wifi name ssid, wlanConnect ApEx, in hexadecimal code transmission
+ssid | True | string | When connecting the wifi name ssid, if you want to give that in hexadeximal the command is wlanConnectApEx
 channel | True | string | Wifi channel to connect, optional 1-12
 auth | True | string | Whether the encryption is OPEN or WPA2PSK
-Encry | True | string | Encryption type, AES or NONE
-Pwd | True | string | Password Wifi, type the password is OPEN NONE; When wlanConnect ApEx, when transmitting hexadecimacode, if the Password is empty, you do not have to enter.
-Chext | True | string | 1 to fill
+encry | True | string | Encryption type, AES or NONE
+pwd | True | string | Password Wifi, type the password is OPEN NONE; When using wlanConnectApEx in hexadecimal, if the Password is empty, you do not have to enter.
+chext | True | string | Just use 1, usage unknown
 
 - Response:
 Does not return any value, you must call the connection state of
@@ -166,10 +165,9 @@ The query interface, to determine if the connection was successful.
 
 
 ## Get SSID of current connected WiFi network
-`http://$ReceiverIpAddress/httpapi.asp?command=GetCurrentWirelessConnectEx`
+`http://$ReceiverIpAddress/httpapi.asp?command=getCurrentWirelessConnectEx`
 
-- Description:
-Request the SSID of the WiFi the LinkPlay is connected to, SSID will be in hex
+- Description: Request the SSID of the WiFi the LinkPlay is connected to, SSID will be in hex
 
 - Returns a non-json form value
 - HTTP Request: GET
@@ -177,7 +175,7 @@ Request the SSID of the WiFi the LinkPlay is connected to, SSID will be in hex
 - Response: res:4D79535349444E616D65:1
 
 Response '4D79535349444E616D65' has to be converted to ASCII 'MySSIDName'.
-Value '1' is probably 'Connected or not
+Value '1' is probably 'Connected or not'
 
 ## Connect to a hidden wifi network
 `http://$ReceiverIpAddress/httpapi.asp?command=wlanConnectHideApEx:ssid:pwd`
@@ -189,7 +187,7 @@ Value '1' is probably 'Connected or not
 - Command: wlanConnectHideApEx: SSID: pwd
 
 ## State request for wifi connection
-`http://$ReceiverIpAddress/httpapi.asp?command=wlanGetConnectState|
+`http://$ReceiverIpAddress/httpapi.asp?command=wlanGetConnectState`
 
 - Description:
 Allows you to request the status of the LinkPlay wifi connection.
@@ -205,7 +203,7 @@ Field | Description
 ------| ------------
 PROCESS | Liaison Process
 PAIRFAIL | Password Error
-FAIL | Error, then captured state then 10s continuously Captured, in order to ensure that this state is stable, otherwise it There may be only a temporary cut
+FAIL | Error, this state will stay for 10s and then update in order to ensure that this state is stable, otherwise it there may be only a temporary error
 OK | Connection is successful
 
 ## Hide or show SSID
@@ -285,8 +283,8 @@ Field | description
 ------|------------
 type | 0: Normal Main speaker Loudspeaker 1: Sub-Speakers
 ch | Channel 0 indicates stereo, 1 left channel, 2 of the right channel
-mode | Playback Mode<br>PLAYER_MODE_NONE 0<br>PLAYER_MODE_AIRPLAY 1<br>PLAYER_MODE_DLNA 2<br>PLAYER_MODE_WIIMU 10<br>PLAYER_MODE_WIIMU_LOCAL 11<br>PLAYER_MODE_WIIMU_STATION 12<br>PLAYER_MODE_WIIMU_RADIO 13<br>PLAYER_MODE_WIIMU_SONGLIST 14<br>PLAYER_MODE_WIIMU_MAX 19<br>PLAYER_MODE_HTTP 20<br>PLAYER_MODE_HTTP_LOCAL 21<br>PLAYER_MODE_HTTP_MAX 29<br>PLAYER_MODE_ALARM 30<br>PLAYER_MODE_LINEIN 40<br>PLAYER_MODE_BT 41<br>PLAYER_MODE_EXT_LOCAL 42<br>PLAYER_MODE_OPTICAL 43<br>PLAYER_MODE_LINEIN_MAX 49<br>PLAYER_MODE_MIRROR 50<br>PLAYER_MODE_TALK 60<br>PLAYER_MODE_SLAVE 99
-loop | Song playback modes playlist: 0: 1 play order: Single Cycle 2: Random Playback 3: List Cycle
+mode | Playback Mode<br>PLAYER_MODE_NONE 0<br>PLAYER_MODE_AIRPLAY 1<br>PLAYER_MODE_DLNA 2<br>PLAYER_MODE_WIIMU 10<br>PLAYER_MODE_WIIMU_LOCAL 11<br>PLAYER_MODE_WIIMU_STATION 12<br>PLAYER_MODE_WIIMU_RADIO 13<br>PLAYER_MODE_WIIMU_SONGLIST 14<br>PLAYER_MODE_WIIMU_MAX 19<br>PLAYER_MODE_HTTP 20<br>PLAYER_MODE_HTTP_LOCAL 21<br>PLAYER_MODE_HTTP_MAX 29<br>PLAYER_MODE_ALARM 30<br>PLAYER_MODE_LINEIN 40<br>PLAYER_MODE_BT 41<br>PLAYER_MODE_EXT_LOCAL 42<br>PLAYER_MODE_OPTICAL 43<br>PLAYER_MODE_LINEIN_MAX 49<br>PLAYER_MODE_MIRROR 50<br>PLAYER_MODE_TALK 60<br>PLAYER_MODE_SLAVE 99 (WARNING: That is wrong on atleast one firmware, dlna was 10 there too) (WIIMU mode is for playbacks created via LinkPlay App)
+loop | Song playback modes playlist: 0: Play in order 1: Repeat one track 2: Random Playback 3: ? (List Cycle)
 eq | The current equalizer settings
 status | Current status: play, load, stop, pause
 curpos |  Current location, in milliseconds
@@ -316,7 +314,7 @@ mute | Is currently muted
 `http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:onepause`
 `http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:resume`
 
-- Description: Controls the player. <br>pause: pause current playback<br>resume: resume playback<br>onepause: if you pause in the resume, if playback is paused
+- Description: Controls the player. <br>pause: pause current playback<br>resume: resume playback<br>onepause: if it is pasued it will resume, if playing it gets paused
 
 - Supported Formats: none
 - HTTP Request: GET
@@ -331,7 +329,7 @@ Controls:
 ## Playing music
 `http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:play:<URI>`
 
-- Description: Starts playback of a file after one
+- Description: Add URI to playback queue
 Pause
 
 - Supported Formats: none
@@ -351,8 +349,7 @@ Pause
 - Response: OK
 
 ## Play next track
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:next
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:next`
 
 - Description: Allows you to play back the next song
 
@@ -363,8 +360,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:next
 
 
 ## Fast forward and rewind
-URInterface:
-Http://10.10.254/httpapi.asp?command=setPlayerCmd:seek:position
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:seek:position`
 
 - Description: Allows you to play back or fast-forward one
 piece
@@ -375,8 +371,7 @@ piece
 - Response: OK
 
 ## Stopping playback
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:stop
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:stop`
 
 - Description: Stops the current playback
 
@@ -387,8 +382,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:stop
 
 
 ## Adjusting volume
-URInterface:
-Http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:vol:value
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:vol:value`
 
 - Description: Adjusting the volume of the player, the value is one volume value of 0-100. Speakers will also change the volume Main and under loudspeaker
 
@@ -399,10 +393,9 @@ Http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:vol:value
 
 
 ## Mute mode
-URInterface:
 `http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:mute:1`
 
-- Description: Activation of the Mute mode, according to the following parameter Activation = 1 and Deactivation = 0
+- Description: Enable Mute mode (1 = muted) (0 = unmuted)
 
 - Supported Formats: none
 - HTTP Request: GET
@@ -410,8 +403,7 @@ URInterface:
 - Response: OK
 
 ## Set the playback mode
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:loopmode:0
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:loopmode:0`
 
 - Description: Starts different playback mode.<br>Available modes:
 <br>0 Reading in order<br>1 Continuous playback<br>2 Shuffle playback<br>-1 Continuous play of a song
@@ -424,8 +416,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:loopmode:0
 
 
 ## Adjusting the Equalizer Mode
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:equalizer:mode
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:equalizer:mode`
 
 - Description: Adjusts the equalizer.<br>Available options:<br>0 Close Equalizer Mode<br>1 Classic Mode<br>2 mode Popular<br>3 mode Jazzy<br>4 Vocal Mode
 
@@ -435,8 +426,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:equalizer:mode
 - Response: OK
 
 ## Viewing Equalizer Mode
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=getEqualizer
+`http://$ReceiverIpAddress/httpapi.asp?command=getEqualizer`
 
 - Description: Allows to interrogate the mode device Equalizer in Progress
 
@@ -448,8 +438,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=getEqualizer
 # Playback Control  MicroSD Card
 
 ## Viewing the File List
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=getLocalPlayList
+`http://$ReceiverIpAddress/httpapi.asp?command=getLocalPlayList`
 
 - Description: Get a list of music files on the Disk, the list of network files to return the results
 
@@ -483,8 +472,7 @@ file | File path (hexadecimal encoding)
 
 
 ## Get file information
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=getFileInfo:index:range
+`http://$ReceiverIpAddress/httpapi.asp?command=getFileInfo:index:range`
 
 - Description: Allows to obtain the detailed information of each of the files, on the basis of the index of each one in the list and from 0. (metadata in hexadecimal encoding).
 - Supported Formats: JSON
@@ -534,8 +522,7 @@ Artist | Artist of the song or unknown (hexadecimacoding)
 Album | Album of the song or unknown (hexadecimacoding)
 
 ## Playing an Audio File on MicroSD
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:playLocalList:index
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:playLocalList:index`
 
 - Description: Allows you to select a file based on the
 getLocalPlayList playlists, playing songs automatically.
@@ -544,8 +531,7 @@ getLocalPlayList playlists, playing songs automatically.
 - Command: setPlayerCmd:playLocalList:index
 
 ## Get a list of cached files
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=getCacheList
+`http://$ReceiverIpAddress/httpapi.asp?command=getCacheList`
 
 - Description: Provides a list of cached files
 
@@ -579,8 +565,7 @@ cachelist | List of Cached Files
 file | File path (hexadecimal encoding)
 
 ## Get information about cached files
-URinterface
-http://$ReceiverIpAddress/httpapi.asp?command=getCacheFileInfo:index:range
+`http://$ReceiverIpAddress/httpapi.asp?command=getCacheFileInfo:index:range`
 
 - Description: Allows to obtain the detailed information of
 each of the files, on the basis of the index of each one in the list and from 0. (metadata in hexadecimal encoding).
@@ -624,8 +609,7 @@ Metadata | Song information or unknown (Hexadecimal encoding)
 # Multi-Room Management
 
 ## Get a list of LinkPlay available
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=multiroom:getSlaveList
+`http://$ReceiverIpAddress/httpapi.asp?command=multiroom:getSlaveList`
 
 - Description of the interface: Allows to obtain the list of the devices using the same communication protocol.
 
@@ -665,19 +649,17 @@ version | firmware version
 
 
 ## Removing a LinkPlay from the multi-room
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveKickout:ip
+`http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveKickout:ip`
 
 - Description of the interface: Allows to remove from the multiroom mode a device Based on its IP address.
 
 - Supported Formats: None
 - HTTP Request: GET
-- Command: Multiroom: SlaveKickout: ip
+- Command: Multiroom:SlaveKickout:ip
 - Response: OK
 
 ## Hide the IP address of a LinkPlay
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveMask:ip
+`http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveMask:ip`
 
 - Description of the interface: Allows to integrate a multi-room mode a device Based on its IP address.
 It is thus rendered invisible from the IP network.
@@ -689,8 +671,7 @@ It is thus rendered invisible from the IP network.
 
 
 ## Releasing a Multi-Room Mode
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveUnMask:ip
+`http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveUnMask:ip`
 
 - Description of the interface: Allows to release from the multi-room mode based on its IP address. It is thus visible on the IP network.
 
@@ -702,7 +683,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveUnMask:ip
 
 
 ## Individual volume adjustment
-URInterface: http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveVolume:ip:volume
+`http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveVolume:ip:volume`
 
 - Description: Allows you to adjust the individual volume of the each of the devicees via the IP address of the device and the definition of a value going from from 1 to 100.
 Note: these settings will be lost when deactivating multi-room mode (kickout)
@@ -713,8 +694,7 @@ Note: these settings will be lost when deactivating multi-room mode (kickout)
 - Response: OK
 
 ## General Volume Adjustment
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:slave_vol:volume
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:slave_vol:volume`
 
 - Description: Adjusts the overal volume of the multi-room with the definition of a value ranging from 1 to 100.
 Note: thesis settings will be lost When disabling multi-room mode
@@ -724,9 +704,8 @@ Note: thesis settings will be lost When disabling multi-room mode
 - Response: OK
 
 
-## Individual activation Mute
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveMute:ip:mute
+## Individual muting
+`http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveMute:ip:mute`
 
 - Description: Enables the Mute on each device via the IP address of the device and by enabling (1) and
 disabling (0)
@@ -737,20 +716,18 @@ disabling (0)
 - Response: OK
 
 ## General activation Mute
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:slave_mute:mute
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:slave_mute:mute`
 
-- Description: Enables the muting
+- Description: Enables the mute
 
 - HTTP Request: GET
 - Command: setPlayerCmd: slave_mute: mute
 - Response: OK  
 
 ## General Mute Disabling
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:slave_mute:unmute
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:slave_mute:unmute`
 
-- Description: To disable the mute mode so overal
+- Description: To disable the mute mode overall
 the
 - Supported formats: None
 - HTTP Request: GET
@@ -759,8 +736,7 @@ the
 
 
 ## Individual management of the audio signal Right / left
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveChannel:ip:channel
+`http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveChannel:ip:channel`
 
 - Description: Enables the Mute on Each of the devices via the IP address of the device and by this parameter to signal right only Channe0 = left and only 1 = Channel signal
 
@@ -769,8 +745,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveChannel:ip:channel
 - Response: OK
 
 ## Overal management of the audio signal Right / left
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:slave_channel:channel
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:slave_channel:channel`
 
 - Description: Enables the Mute on Each of devices via the IP address of the device and by this parameter to signal
 right only Channel= 0 and left signal only 1 = Channel
@@ -780,8 +755,7 @@ right only Channel= 0 and left signal only 1 = Channel
 - Response: OK
 
 ## Individual definition of the device Name
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveSetDeviceName:%ip:%s
+`http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveSetDeviceName:%ip:%s`
 
 - Description: individual settings of the name of the square in mode UPnP / Airplay
 
@@ -793,8 +767,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=multiroom:SlaveSetDeviceName:%ip:%
 
 
 ## Disabling Multi-Room
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=multiroom:Ungroup
+`http://$ReceiverIpAddress/httpapi.asp?command=multiroom:Ungroup`
 
 - Description: Disables the multi-room mode
 
@@ -806,8 +779,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=multiroom:Ungroup
 # Control parameter network
 
 ## Opening the WPS server
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=wpsservermode
+`http://$ReceiverIpAddress/httpapi.asp?command=wpsservermode`
 
 - Description: Opening of WPS standby server integration of new device
 
@@ -816,10 +788,9 @@ http://$ReceiverIpAddress/httpapi.asp?command=wpsservermode
 - Response: OK
 
 ## Closing the WPS server
+`http://$ReceiverIpAddress/httpapi.asp?command=wpscancel`
 
-http://$ReceiverIpAddress/httpapi.asp?command=wpscancel
-
-- Description: Opening of WPS standby server integration
+- Description: Closing of WPS standby server integration
 of new devices
 
 - HTTP Request: GET
@@ -828,8 +799,7 @@ of new devices
 unknown command
 
 ## WPS Client opening for device
-URL:
-http://$ReceiverIpAddress/httpapi.asp?command=wpsclientmode
+`http://$ReceiverIpAddress/httpapi.asp?command=wpsclientmode`
 
 - Description: WPS server to integrate opening a device
 
@@ -839,35 +809,30 @@ http://$ReceiverIpAddress/httpapi.asp?command=wpsclientmode
 
 
 ## Change the SSID name of the device
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setSSID:value
+`http://$ReceiverIpAddress/httpapi.asp?command=setSSID:value`
 
 - Description: Sets a new network name (SSID) of the device in hexadecimaformats
 
 - HTTP Request: GET
 - Command: setSSID:value
 - Response:
-No response. The system restarts partner after the call.
+No response. The system restarts after the call.
 
 ## Setting the password WIFI
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setNetwork:1:password
+`http://$ReceiverIpAddress/httpapi.asp?command=setNetwork:1:password`
 
-- Description: Setting a new password using letters and / or numbers and crossing of setnetwork setting: 1 (Securing WIFI network (WPAPSK) in contrast, setnetwork: 0 (oPEN) Makes the network open WIFI.
+- Description: Setting a new password using letters and / or numbers and crossing of setnetwork setting: 1 (Securing WIFI network (WPAPSK) in contrast, setnetwork: 0 (OPEN) makes the network open WIFI.
 
 - HTTP Request: GET
-- Command: setnetwork: 1: password
+- Command: setnetwork:1:password
 - Response:
 No response 
+The system restarts after the validation of the new password.
 
-the system restarts after the validation of the new password.
-password The Therefore must reconnect to the WiFi network and enter the new password.
-password.
 
 
 ## Restoring the factory setting
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=restoreToDefault
+`http://$ReceiverIpAddress/httpapi.asp?command=restoreToDefault`
 
 - Description: To restore factory settings, erasing defined configurations. The device restarts.
 
@@ -878,8 +843,7 @@ the response back:
 OK
 
 ## Restarting the device
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=reboot
+`http://$ReceiverIpAddress/httpapi.asp?command=reboot`
 
 - Description: Allows you to reboot the device
 
@@ -888,9 +852,8 @@ http://$ReceiverIpAddress/httpapi.asp?command=reboot
 - Command: reboot
 - Response: OK
 
-## Programming stop device (switching off)
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setShutdown:sec
+## Programming automagic shutdown
+`http://$ReceiverIpAddress/httpapi.asp?command=setShutdown:sec`
 
 - Description: Used to turn off the device timed.
 
@@ -899,8 +862,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=setShutdown:sec
 - Response: OK
 
 ## Show time left to shut down
-URInterface:
-http://$ReceiverIpAddress/httpapi.asp?command=getShutdown
+`http://$ReceiverIpAddress/httpapi.asp?command=getShutdown`
 
 - Description: Shows the current information about time left to shut down (in seconds)
 
@@ -910,10 +872,9 @@ http://$ReceiverIpAddress/httpapi.asp?command=getShutdown
 
 
 ## Stop WIFI signal
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPowerWifiDown
+`http://$ReceiverIpAddress/httpapi.asp?command=setPowerWifiDown`
 
-- Description: Turns off the WIFI signadevice
+- Description: Turns off the wifi
 
 - HTTP Request: GET
 - Command: setPowerWifiDown
@@ -921,9 +882,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=setPowerWifiDown
 
 
 ## Setting the MCU display
-
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=MCUDisplayText:xxxx
+`http://$ReceiverIpAddress/httpapi.asp?command=MCUDisplayText:xxxx`
 
 - Description: Manage a MCU text display in the limit of 32 characters.
 -
@@ -933,8 +892,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=MCUDisplayText:xxxx
 - Response: OK
 
 ## Setting the name of device
-URL
-http://$ReceiverIpAddress/httpapi.asp?command=setDeviceName:%s
+`http://$ReceiverIpAddress/httpapi.asp?command=setDeviceName:%s`
 
 - Description: Sets the name UPnP, DLNA and Airplay of the device (Hex)
 
@@ -945,8 +903,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=setDeviceName:%s
 # Firmware Update
 
 ## Update search
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=getMvRemoteUpdateStartCheck
+`http://$ReceiverIpAddress/httpapi.asp?command=getMvRemoteUpdateStartCheck`
 
 - Description: Search for the firmware updates available
 
@@ -956,8 +913,7 @@ http://$ReceiverIpAddress/httpapi.asp?command=getMvRemoteUpdateStartCheck
 - Response: OK
 
 ## Update availability
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=getMvRemoteUpdateStatus
+`http://$ReceiverIpAddress/httpapi.asp?command=getMvRemoteUpdateStatus`
 
  - Description: Allows you to check if an update is available. May need to call Severatimes Because The device Itself need to query the server if updates are available.
 
@@ -975,8 +931,7 @@ others | update Refusal
 
 
 ## Notification updates
-URL:
-http://$ReceiverIpAddress/httpapi.asp?command=getMvRemoteUpdateStart
+`http://$ReceiverIpAddress/httpapi.asp?command=getMvRemoteUpdateStart`
 
 - Description: After calling the interface, if a new version is available, the device starts to download updates. At the
 end of the download, the update process starts. <br>WARNING: DO NOT POWER OFF DURING THIS PROCESS!!
@@ -987,8 +942,7 @@ end of the download, the update process starts. <br>WARNING: DO NOT POWER OFF DU
 - Response: OK
 
 ## Status of the update process
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=getMvRemoteUpdateStatus
+`http://$ReceiverIpAddress/httpapi.asp?command=getMvRemoteUpdateStatus`
 
 - Description: Get the download progress.
 
@@ -1009,8 +963,7 @@ Value | Meaning
 
 
 ## Download progress
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=getMvRomBurnPrecent
+`http://$ReceiverIpAddress/httpapi.asp?command=getMvRomBurnPrecent`
 
 - Description: Status of updating
 
@@ -1041,17 +994,17 @@ If the device is online, the device using the system time synchronization SNTP, 
 
 If the device is online, you can use to adjust the system time:
 
-http://$ReceiverIpAddress/httpapi.asp?command=timeSync:YYYYMMDDHHMMSS
+`http://$ReceiverIpAddress/httpapi.asp?command=timeSync:YYYYMMDDHHMMSS`
 
 ## Set the timer
 the URinterface:
 http://$ReceiverIpAddress/httpapi.asp?command=setAlarmClock:n:trig:op:time[:day][:url]
 
-- Description: [?] Hooks que la indicates field is required, for example, is set to trip at a daily alarm instruction
+- Description: [] indicates the field is optional
 
 http://$ReceiverIpAddress/httpapi.asp?command=setAlarmClock:n:trig:op:time:url
 
-?
+Another form of execution
 
 - HTTP Request : GET
 - Command: setAlarmClock: n: trig: op: time [: day] [: url]
@@ -1066,8 +1019,7 @@ day | Format% 04M% 02s% 02J (M: month / s week / d: day)<br>For example 20,140,1
 url | localize the script maximum length of 256 bytes
 
 ## Remaining playing time (Timer)
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=getAlarmClock:n
+`http://$ReceiverIpAddress/httpapi.asp?command=getAlarmClock:n`
 
 Field | Description
 -------|-------------------------
@@ -1079,9 +1031,7 @@ path | "%s"
 
 
 ## Off alarm
-
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=alarmStop
+`http://$ReceiverIpAddress/httpapi.asp?command=alarmStop`
 
 - Description: Stop Programmed alarm
 
@@ -1092,14 +1042,13 @@ http://$ReceiverIpAddress/httpapi.asp?command=alarmStop
 
 # Source Line IN
 ## Read Access Line IN
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:switchmode:%s
+`http://$ReceiverIpAddress/httpapi.asp?command=setPlayerCmd:switchmode:%s`
 
 - Description: Access to the different reading mode as possible in the qui Line In.
 line-in : Switch to AUX mode,
-optical : Go SPDIF mode
+optical : Go to SPDIF mode
 UDISK : Go to the Micro SD reader
-wifi : GB WIFI mode
+wifi : Go to WIFI mode
 
 - HTTP Request: GET
 - Command: setPlayerCmd:switchmode:%s
@@ -1110,8 +1059,7 @@ wifi : GB WIFI mode
 # Simulation Instruction IO
 Do not use without hardware knowledge, can kill your Speaker!!
 ## Instruction GPIO pullup
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=IOSimuPullUp:%d
+`http://$ReceiverIpAddress/httpapi.asp?command=IOSimuPullUp:%d`
 
 - Description: Allows management of the GPIO
 
@@ -1124,35 +1072,41 @@ http://$ReceiverIpAddress/httpapi.asp?command=IOSimuPullUp:%d
 - Command: IOSimuPullUp:%d
 
 ## Instruction pulldown GPIO
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=IOSimuPullDown:%d
+`http://$ReceiverIpAddress/httpapi.asp?command=IOSimuPullDown:%d`
 
 - Description: Delete GPIO management forced
 - Command: IOSimuPullDown:%d
 
 ## GPIO reading
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=IOSimuRead:%d
+`http://$ReceiverIpAddress/httpapi.asp?command=IOSimuRead:%d`
 
 - Description: Read GPIO
 - Command: IOSimuRead:%d
 
 ## Analog controlkey input
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=IOSimuKeyIn:%d
+`http://$ReceiverIpAddress/httpapi.asp?command=IOSimuKeyIn:%d`
 
 - Description: References MCU settings. The MCU MCU Receives instruction + XXX KEY +
 
 - Command: IOSimuKeyIn:%d
 
 ## Analog controlkey output
-the URinterface:
-http://$ReceiverIpAddress/httpapi.asp?command=IOSimuKeyOut:%d
+`http://$ReceiverIpAddress/httpapi.asp?command=IOSimuKeyOut:%d`
 
 - Description: References MCU settings. The MCU Receives instruction AXX + KEY + XXX Voice
-- Command:
-the URinterface:<br>http://$ReceiverIpAddress/httpapi.asp?command=PromptEnable<br>
-http://$ReceiverIpAddress/httpapi.asp?command=PromptDisable
+
+# Others
+## Enable/disable prompt
+`http://$ReceiverIpAddress/httpapi.asp?command=PromptEnable`
+
+`http://$ReceiverIpAddress/httpapi.asp?command=PromptDisable`
 
 Description:
-- Command: PromptEnable and PromptDisable
+Unknown
+
+## Enable Telnet access on modern firmware
+`http://$ReceiverIpAddress/httpapi.asp?command=507269765368656C6C:5f7769696d75645f`
+- Rebooting (via command or in Telnet) reverts this
+- Hex decoded is `PrivShell:_wiimud_`
+- Telnet is opened on default port 22, with username & password `admin`
+- You will have root access
