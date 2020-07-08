@@ -1,6 +1,6 @@
 # LinkPlay API Documentation
 ## Small note
-If your firmware is from 2015 or earlier, you have an open telnet service on the default port. Username and password is `admin`. BE CAREFUL, YOU WILL HAVE ROOT ACCESS THEN!
+If your firmware is from 2015 or earlier, you have an open telnet service on the default port. Username and password is `admin`. BE CAREFUL, YOU WILL HAVE ROOT ACCESS THEN! UPDATE: Any known firmware can have Telnet! See [here](#enable-telnet-access-on-modern-firmware).
 ## Get Information
 
 `http://$ReceiverIpAddress/httpapi.asp?command=getStatus`
@@ -1104,9 +1104,14 @@ Do not use without hardware knowledge, can kill your Speaker!!
 Description:
 Unknown
 
+## Poweroff WiFi card
+`http://$ReceiverIpAddress/httpapi.asp?command=poweroff`
+This will poweroff the WiFi card but not the MCU. NOT RECOMMENED. YOUR SPEAKER WILL BE ON AND OFF AT THE SAME TIME!
+
 ## Enable Telnet access on modern firmware
 `http://$ReceiverIpAddress/httpapi.asp?command=507269765368656C6C:5f7769696d75645f`
 - Rebooting (via command or in Telnet) reverts this
 - Hex decoded is `PrivShell:_wiimud_`
 - Telnet is opened on default port 22, with username & password `admin`
 - You will have root access
+- DO NOT POWEROFF! See above for the reason. (reboot is okay)
