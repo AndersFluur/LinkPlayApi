@@ -821,7 +821,7 @@ No response. The system restarts after the call.
 ## Setting the password WIFI
 `http://$ReceiverIpAddress/httpapi.asp?command=setNetwork:1:password`
 
-- Description: Setting a new password using letters and / or numbers and crossing of setnetwork setting: 1 (Securing WIFI network (WPAPSK) in contrast, setnetwork: 0 (OPEN) makes the network open WIFI.
+- Description: Setting a new password using letters and / or numbers and crossing of setnetwork setting: 1 (Securing WIFI network (WPAPSK) in contrast, setnetwork:0:old_password makes the network open WIFI.
 
 - HTTP Request: GET
 - Command: setnetwork:1:password
